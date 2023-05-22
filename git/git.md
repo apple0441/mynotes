@@ -1,203 +1,203 @@
-# Git设置与使用帮助
+# Git setup and usage help
 
 
->    参考网站：  
-http://rogerdudler.github.io/git-guide/index.zh.html  
-http://git.oschina.net/progit/  
+> Reference website:
+http://rogerdudler.github.io/git-guide/index.zh.html
+http://git.oschina.net/progit/
 
-### 1. 检查是否已经有SSH Key
+### 1. Check if there is already an SSH Key
 
 ```bash
 cd ~/.ssh
 ```
 
-### 2. 生成一个新的SSH Key
+### 2. Generate a new SSH Key
 
 ```bash
 ssh-keygen -t rsa -C "admin@example.com"
 ```
-请自行替换 `admin@example.com` 为自己的电邮地址。之后直接回车，不用填写东西。之后会让你输入密码短语（`passphrase`）。然后就生成一个目录 `.ssh` ，里面有两个文件： `id_rsa` 和  `id_rsa.pub` 。
+Please replace `admin@example.com` with your own email address. After that, press Enter directly without filling in anything. You will then be asked to enter a passphrase (`passphrase`). Then a directory `.ssh` is generated, which contains two files: `id_rsa` and `id_rsa.pub`.
 
-### 3. Git配置
+### 3. Git configuration
 
-**1. 配置用户信息**
+**1. Configure user information**
 
 ```bash
 git config --global user.name "John Doe"
 git config --global user.email "johndoe@example.com"
 ```
 
-请自行替换 `John Doe` 为自己常用的英文网络`ID` ， `johndeo@exaple.com` 为自己常用的 `Email` 。
+Please replace `John Doe` with your commonly used English network `ID`, and `johndeo@exaple.com` with your commonly used `Email`.
 
-**2. 获取帮助**
+**2. Get help**
 
-想了解 `Git` 的各式工具该怎么用，可以阅读它们的使用帮助，方法有三：
+If you want to know how to use the various tools of `Git`, you can read their help. There are three methods:
 
 ```bash
 git help <verb>
 git <verb> --help
-man git-<verb>
+man git -<verb>
 ```
 
-比如，要学习 `config` 命令可以怎么用，运行：
+For example, to learn how the `config` command can be used, run:
 
 ```bash
 git help config
 ```
 
-### 4. Git相关操作命令
+### 4. Git related operation commands
 
 
-**1. 创建新仓库**
+**1. Create a new warehouse**
 
-创建新文件夹，打开，然后执行：
+Create a new folder, open it, and execute:
 
 ```bash
 git init
 ```
 
-以创建新的 git 仓库。
+to create a new git repository.
 
-**2. 检出仓库**
+**2. Check out the repository**
 
-执行如下命令以创建一个本地仓库的克隆版本：
+Execute the following command to create a clone of the local repository:
 
 ```bash
-git clone /path/to/repository 
+git clone /path/to/repository
 ```
 
-如果是远端服务器上的仓库，你的命令会是这个样子：
+If it is a warehouse on a remote server, your command will look like this:
 
 ```bash
 git clone username@host:/path/to/repository
 ```
 
-**3. 工作流**
+**3. Workflow**
 
-你的本地仓库由 `git` 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 缓存区（`Index`），它像个缓存区域，临时保存你的改动；最后是 `HEAD`，指向你最近一次提交后的结果。
+Your local repository consists of three "trees" maintained by `git`. The first is your working directory, which holds the actual files; the second is the cache (`Index`), which is like a cache area, temporarily storing your changes; and the last is `HEAD`, which points to your latest commit after the result.
 
-**4. 添加与提交**
+**4. Add and Submit**
 
-你可以计划改动（把它们添加到缓存区），使用如下命令：
+You can schedule changes (add them to the cache) with the following command:
 
 ```bash
 git add <filename>
 git add *
 ```
 
-这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：
+This is the first step in the basic git workflow; use the following command to actually commit the changes:
 
 ```bash
-git commit -m "代码提交信息"
+git commit -m "code commit information"
 ```
 
-现在，你的改动已经提交到了 `HEAD`，但是还没到你的远端仓库。
+Now, your changes have been committed to `HEAD`, but not to your remote repository.
 
-**5. 推送改动**
+**5. Push changes**
 
-你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：
+Your changes are now in HEAD of your local repository. Execute the following command to submit these changes to the remote repository:
 
 ```bash
 git push origin master
 ```
 
-可以把 `master` 换成你想要推送的任何分支。 
+You can replace `master` with whatever branch you want to push.
 
-如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：
+If you haven't cloned an existing repository and want to connect your repository to a remote server, you can add it with the following command:
 
 ```bash
 git remote add origin <server>
 ```
 
-如此你就能够将你的改动推送到所添加的服务器上去了。
+This way you can push your changes to the added server.
 
-**6. 分支**
+**6. Branch**
 
-分支是用来将特性开发绝缘开来的。在你创建仓库的时候，`master` 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。
+Branches are used to insulate feature development. `master` is the "default" when you create a repository. Do development on other branches and merge them into the main branch when you're done.
 
-创建一个叫做 `feature_x` 的分支，并切换过去：
+Create a branch called `feature_x` and switch to it:
 
 ```bash
 git checkout -b feature_x
 ```
 
-切换回主分支：
+Switch back to the master branch:
 
 ```bash
 git checkout master
 ```
 
-再把新建的分支删掉：
+Then delete the newly created branch:
 
 ```bash
 git branch -d feature_x
 ```
 
-除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：
+Unless you push the branch to a remote repository, the branch is invisible to others:
 
 ```bash
 git push origin <branch>
 ```
 
-**7. 更新与合并**
+**7. Update and Merge**
 
-要更新你的本地仓库至最新改动，执行：
+To update your local repository with the latest changes, execute:
 
 ```bash
 git pull
 ```
 
-以在你的工作目录中 获取（`fetch`） 并 合并（`merge`） 远端的改动。
-要合并其他分支到你的当前分支（例如 `master`），执行：
+to fetch (`fetch`) and merge (`merge`) remote changes in your working directory.
+To merge other branches into your current branch (e.g. `master`), execute:
 
 ```bash
 git merge <branch>
 ```
 
-两种情况下，`git` 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（`conflicts`）。 这时候就需要你修改这些文件来人肉合并这些 冲突（`conflicts`） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：
+In both cases, `git` will attempt to automatically merge the changes. Unfortunately, automatic merging does not always succeed and can lead to conflicts (`conflicts`). At this time, you need to modify these files to manually merge these conflicts (`conflicts`). After making changes, you need to execute the following command to mark them as merged successfully:
 
 ```bash
 git add <filename>
 ```
-在合并改动之前，也可以使用如下命令查看：
+Before merging changes, you can also use the following command to view:
 
 ```bash
 git diff <source_branch> <target_branch>
 ```
 
-**8. 标签**
+**8. Label**
 
-在软件发布时创建标签，是被推荐的。这是个旧有概念，在 `SVN` 中也有。可以执行如下命令以创建一个叫做 `1.0.0` 的标签：
+Creating tags when software is released is recommended. This is an old concept, also in `SVN`. To create a tag called `1.0.0`, execute the following command:
 
 ```bash
 git tag 1.0.0 1b2e1d63ff
 ```
 
-`1b2e1d63ff` 是你想要标记的提交 `ID` 的前 10 位字符。使用如下命令获取提交 `ID`：
+`1b2e1d63ff` is the first 10 characters of the commit `ID` you want to tag. Get the commit `ID` using the following command:
 
 ```bash
 git log
 ```
-你也可以用该提交 `ID` 的少一些的前几位，只要它是唯一的。
+You can also use less of the first few digits of the commit `ID`, as long as it is unique.
 
-**9. 替换本地改动**
+**9. Replace local changes**
 
-假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：
+If you do something wrong (which is impossible, of course), you can replace your local changes with:
 
 ```bash
-git checkout -- <filename>
+git checkout --<filename>
 ```
 
-此命令会使用 `HEAD` 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。
+This command will replace the files in your working directory with the latest contents from `HEAD`. Changes already added to the cache, as well as new files, are unaffected.
 
-假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：
+If you want to discard all your local changes and commits, you can get the latest version from the server and point your local master branch to it:
 
 ```bash
 git fetch origin
 git reset --hard origin/master
 ```
 
-**10.在命令行中创建并提交Git仓库**
+**10. Create and submit a Git repository on the command line**
 
 ```bash
 mkdir example
@@ -210,7 +210,7 @@ git remote add origin git@github.com:ycrao/example.git
 git push -u origin master
 ```
 
-**11. 在命令行提交已有项目**
+**11. Submit an existing project on the command line**
 
 ```bash
 cd existing_git_repo
@@ -218,4 +218,4 @@ git remote add origin git@github.com:ycrao/existing_git_repo.git
 git push -u origin master
 ```
 
-注意：第10、11条示例中 `git@github.com:ycrao/example.git` 或 `git@github.com:ycrao/existing_git_repo.git` 是仓库 `SSH` 方式地址，一般源码托管服务商（如 `GitHub` 和 `Coding` ）会在仓库页面中告知你，请根据实际情况与操作自行替换。
+Note: `git@github.com:ycrao/example.git` or `git@github.com:ycrao/existing_git_repo.git` in the examples 10 and 11 is the address of the warehouse `SSH`, and the general source code hosting service provider ( Such as `GitHub` and `Coding`) will inform you on the warehouse page, please replace it yourself according to the actual situation and operation.

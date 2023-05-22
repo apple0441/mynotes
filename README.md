@@ -1,58 +1,58 @@
-笔记文摘
+note abstract
 =======
 
-用 `markdown` 书写的笔记（部分来源于互联网），共享出来给大家！
+Notes written in `markdown` (partially from the Internet), share them with everyone!
 
 
-### 面试题系列：
+### Interview question series:
 
-- [PHP面试题汇总](php/interview.md) [#1](https://github.com/ycrao/mynotes/issues/1)
-- [PHP面试题汇总二](php/interview_2.md) [#4](https://github.com/ycrao/mynotes/issues/4)
+- [Summary of PHP interview questions](php/interview.md) [#1](https://github.com/ycrao/mynotes/issues/1)
+- [PHP interview questions summary 2](php/interview_2.md) [#4](https://github.com/ycrao/mynotes/issues/4)
 
-### 代码片段：
+### code segment:
 
-- [实现QQ/微信拼手气红包算法](php/randomLuckyRedPacket.php)：这里仅考虑红包分配自身，不考虑并发、超时退回等逻辑。
-- 来自 [30 seconds of knowledge](https://github.com/30-seconds/30_seconds_of_knowledge/tree/master/src/assets/snippets/php) 相关 [PHP代码片段](php/30_seconds_of_knowledge_php.md) [#5](https://github.com/ycrao/mynotes/issues/5) 。
+- [Implementing the QQ/WeChat Lucky Red Packet Algorithm](php/randomLuckyRedPacket.php): Here only the red packet distribution itself is considered, and logics such as concurrency and timeout return are not considered.
+- From [30 seconds of knowledge](https://github.com/30-seconds/30_seconds_of_knowledge/tree/master/src/assets/snippets/php) related [PHP code snippet](php/30_seconds_of_knowledge_php.md) [# 5](https://github.com/ycrao/mynotes/issues/5).
 
-### Laravel 入门教程：
+### Laravel Getting Started Tutorial:
 
-本人去年自己写的 `Laravel` 系列教程，使用的4版，内容可能有些过时或错漏。博客连载地址为：http://douyasi.com/category/startlaravel/
+I used version 4 of the `Laravel` series of tutorials I wrote last year, and the content may be outdated or missing. The blog serial address is: http://douyasi.com/category/startlaravel/
 
-目录
+Table of contents
 
-1. [准备性工作](laravel_cms/01.md)
-2. [建立数据库](laravel_cms/02.md)
-3. [页面显示与路由控制（一）](laravel_cms/03.md)
-4. [页面显示与路由控制（二）](laravel_cms/04.md)
-5. [RESTFUL路由与控制器](laravel_cms/05.md)
+1. [Preparatory work](laravel_cms/01.md)
+2. [Create database](laravel_cms/02.md)
+3. [Page display and routing control (1)](laravel_cms/03.md)
+4. [Page display and routing control (2)](laravel_cms/04.md)
+5. [RESTFUL Routing and Controller](laravel_cms/05.md)
 ...
 
-### Git 相关：
+### Git related:
 
-- [Git设置与使用帮助](git/git.md) [#2](https://github.com/ycrao/mynotes/issues/2)
-- [直接拿来用！10段超有用的Git命令行代码](git/advanced-git-commands.md) [#3](https://github.com/ycrao/mynotes/issues/3)
+- [Git setup and usage help](git/git.md) [#2](https://github.com/ycrao/mynotes/issues/2)
+- [Use it directly! 10 super useful Git command line codes](git/advanced-git-commands.md) [#3](https://github.com/ycrao/mynotes/issues/3)
 
-### MySQL 相关：
+### MySQL related:
 
-[MySQL基础命令](mysql/basic.md)
+[MySQL Basic Commands](mysql/basic.md)
 
-### Rust 相关：
+### Rust related:
 
-Rust 学习笔记及示例代码: [Learning Rust](https://github.com/ycrao/learning_rust) 。
+Rust study notes and sample code: [Learning Rust](https://github.com/ycrao/learning_rust).
 
-### Bash 相关：
+### Bash related:
 
-本人翻译的 [Bash 中文指南](https://github.com/ycrao/bash-guide) ，不错的 `linux bash` 命令入门材料。
+The [Bash Chinese Guide](https://github.com/ycrao/bash-guide) I translated is a good entry material for `linux bash` commands.
 
-### Vue 相关：
+### Vue related:
 
-Vue.js 学习示例及笔记：[Learning Vue](https://github.com/ycrao/learning_vue) 。
+Vue.js learning examples and notes: [Learning Vue](https://github.com/ycrao/learning_vue).
 
-### JAVA 相关：
+### JAVA related:
 
-- 学习 Java 示例及笔记：[Learning Java](https://github.com/ycrao/learning_java)
-- Simple restful API service Demo： [simple-api-service](https://github.com/douyasi/simple-api-service)
+- Learning Java examples and notes: [Learning Java](https://github.com/ycrao/learning_java)
+- Simple restful API service Demo: [simple-api-service](https://github.com/douyasi/simple-api-service)
 
-### RabbitMQ 相关
+### RabbitMQ related
 
-RabbitMQ 多运行模式简介：[rabbitmq-examples](https://github.com/ycrao/rabbitmq-examples)
+Introduction to RabbitMQ multi-running mode: [rabbitmq-examples](https://github.com/ycrao/rabbitmq-examples)

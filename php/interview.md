@@ -1,44 +1,44 @@
-# PHP面试题汇总
+# Summary of PHP interview questions
 
->    部分题目收集自网络，里面可能会穿插一些MySQL与HTML相关问题。
+> Some questions are collected from the Internet, and some questions related to MySQL and HTML may be interspersed in it.
 
-## 1. echo(),print(),print_r()的区别？
+## 1. What is the difference between echo(), print(), and print_r()?
 
-**echo** 和 **print** 不是一个函数，是一个语言结构；  
-`print(string $arg)` 只有一个参数；  
-`echo arg1,arg2` 可以输出多个参数，返回 `void` ；  
-`echo` 和 `print` 只能打印出string，不能打印出结构；  
-`print_r`能打印出结构。比如:
+**echo** and **print** are not a function, but a language structure;
+`print(string $arg)` has only one argument;
+`echo arg1, arg2` can output multiple parameters and return `void`;
+`echo` and `print` can only print strings, not structures;
+`print_r` can print out the structure. for example:
 
 ```php
 $arr = array("key"=>"value");
 print_r($arr);
 ```
 
-## 2. 语句include和require的区别是什么?
+## 2. What is the difference between the statement include and require?
 
-在失败的时候：  
-`include` 产生一个 `warning` ，而 `require` 直接产生错误中断；  
-`require` 在运行前载入；  
-`include` 在运行时载入；  
-`require_once` 和 `include_once` 可以避免重复包含同一文件。  
+On failure:
+`include` generates a `warning`, while `require` directly generates an error break;
+`require` to load before running;
+`include` is loaded at runtime;
+`require_once` and `include_once` can avoid including the same file repeatedly.
 
-## 3. php中传值与传引用有啥区别?
+## 3. What is the difference between pass by value and pass by reference in php?
 
-&表示传引用；  
-函数中参数传引用会将参数进行改变；  
-一般在输出参数有多个的时候可以考虑使用引用。  
+& means pass by reference;
+Parameter passing by reference in the function will change the parameter;
+Generally, you can consider using references when there are multiple output parameters.
 
 ```php
 $num = 10
 function multiply($num){
-    $num = $num * 10;
+     $num = $num * 10;
 }
 multiply($num);
 echo $num;
 ```
 
-## 4. 下面哪项没有将john添加到users数组中？
+## 4. Which of the following does not add john to the users array?
 
 ```
 (a) $users[] = 'john';
@@ -46,86 +46,85 @@ echo $num;
 (c) array_push($users,'john');
 (d) $users ||= 'john';
 ```
-答案为bd，php 里面无 `array_add` 函数，d项为语法错误的表达。
+The answer is bd, there is no `array_add` function in php, and item d is the expression of grammatical error.
 
-## 5. HTTP协议中几个状态码的含义。
-
-```
-200 : 请求成功，请求的数据随之返回。
-301 : 永久性重定向。
-302 : 暂时行重定向。
-401 : 当前请求需要用户验证。
-403 : 服务器拒绝执行请求，即没有权限。
-404 : 请求失败，请求的数据在服务器上未发现。
-500 : 服务器错误。一般服务器端程序执行错误。
-503 : 服务器临时维护或过载。这个状态时临时性的。
-```
-## 6. 写出一些php魔术方法。
+## 5. The meaning of several status codes in the HTTP protocol.
 
 ```
-__construct() 实例化类时自动调用。
-__destruct() 类对象使用结束时自动调用。
-__set() 在给未定义的属性赋值的时候调用。
-__get() 调用未定义的属性时候调用。
-__isset() 使用isset()或empty()函数时候会调用。
-__unset() 使用unset()时候会调用。
-__sleep() 使用serialize序列化时候调用。
-__wakeup() 使用unserialize反序列化的时候调用。
-__call() 调用一个不存在的方法的时候调用。
-__callStatic()调用一个不存在的静态方法是调用。
-__toString() 把对象转换成字符串的时候会调用。比如 echo。
-__invoke() 当尝试把对象当方法调用时调用。
-__set_state() 当使用var_export()函数时候调用。接受一个数组参数。
-__clone() 当使用clone复制一个对象时候调用。
+200 : The request is successful, and the requested data is returned accordingly.
+301 : Permanent redirect.
+302 : Temporary line redirection.
+401 : The current request requires user authentication.
+403: The server refuses to execute the request, that is, there is no permission.
+404 : The request failed, the requested data was not found on the server.
+500 : Server error. General server-side program execution error.
+503: The server is temporarily maintained or overloaded. This state is temporary.
 ```
-
-## 7. MySQL存储引擎 MyISAM 和 InnoDB 的区别。
+## 6. Write some php magic methods.
 
 ```
-a. MyISAM类型不支持事务处理等高级处理，而InnoDB类型支持.
-b. MyISAM类型的表强调的是性能，其执行数度比InnoDB类型更快.
-c. InnoDB不支持FULLTEXT类型的索引.
-d. InnoDB中不保存表的具体行数，也就是说，执行select count(*) from table时，InnoDB要扫描一遍整个表来计算有多少行，但是MyISAM只要简单的读出保存好的行数即可.
-e. 对于AUTO_INCREMENT类型的字段，InnoDB中必须包含只有该字段的索引，但是在MyISAM表中，可以和其他字段一起建立联合索引。
-f. DELETE FROM table时，InnoDB不会重新建立表，而是一行一行的删除。
-g. LOAD TABLE FROM MASTER操作对InnoDB是不起作用的，解决方法是首先把InnoDB表改成MyISAM表，导入数据后再改成InnoDB表，但是对于使用的额外的InnoDB特性(例如外键)的表不适用.
-h. MyISAM支持表锁，InnoDB支持行锁。
+__construct() is called automatically when the class is instantiated.
+__destruct() is called automatically when a class object is finished using it.
+__set() is called when assigning a value to an undefined property.
+__get() is called when an attribute is not defined.
+__isset() will be called when using the isset() or empty() function.
+__unset() will be called when using unset().
+__sleep() is called when serializing using serialize.
+__wakeup() is called when unserialize is used for deserialization.
+__call() Called when calling a method that does not exist.
+__callStatic() calls a static method that does not exist.
+__toString() is called when converting an object to a string. Such as echo.
+__invoke() Called when an attempt is made to invoke an object as a method.
+__set_state() Called when using the var_export() function. Accepts an array parameter.
+__clone() Called when an object is copied using clone.
 ```
 
-## 8. 说出一些MySQL优化方法？
+## 7. The difference between MySQL storage engine MyISAM and InnoDB.
 
 ```
-a. 设计良好的数据库结构，允许部分数据冗余，尽量避免join查询，提高效率。
-b. 选择合适的表字段数据类型和存储引擎，适当的添加索引。
-c. mysql库主从读写分离。
-d. 找规律分表，减少单表中的数据量提高查询速度。
-e. 添加缓存机制，比如memcached，apc等。
-f. 不经常改动的页面，生成静态页面。
-g. 书写高效率的SQL。比如 SELECT * FROM TABEL 改为 SELECT field_1, field_2, field_3 FROM TABLE.
+a. The MyISAM type does not support advanced processing such as transaction processing, but the InnoDB type does.
+b. The MyISAM type table emphasizes performance, and its execution is faster than the InnoDB type.
+c. InnoDB does not support indexes of type FULLTEXT.
+d. InnoDB does not save the specific row number of the table, that is to say, when executing select count(*) from table, InnoDB needs to scan the entire table to calculate how many rows there are, but MyISAM simply reads the saved row number That's it.
+e. For fields of type AUTO_INCREMENT, InnoDB must contain an index only for this field, but in MyISAM tables, a joint index can be established with other fields.
+f. When DELETE FROM table, InnoDB will not recreate the table, but delete it row by row.
+g. The LOAD TABLE FROM MASTER operation does not work for InnoDB. The solution is to first change the InnoDB table to a MyISAM table, and then change it to an InnoDB table after importing data. However, for additional InnoDB features used (such as foreign keys) Table does not apply.
+h. MyISAM supports table locks, and InnoDB supports row locks.
 ```
 
-## 9. 下面$a的结果是：
+## 8. Name some MySQL optimization methods?
+
+```
+a. Design a good database structure, allow partial data redundancy, try to avoid join queries, and improve efficiency.
+b. Select the appropriate table field data type and storage engine, and add indexes appropriately.
+c. The mysql library master-slave read and write separation.
+d. Find rules and divide tables to reduce the amount of data in a single table and improve query speed.
+e. Add caching mechanism, such as memcached, apc, etc.
+f. Generate static pages for infrequently changed pages.
+g. Write efficient SQL. For example, SELECT * FROM TABEL is changed to SELECT field_1, field_2, field_3 FROM TABLE.
+```
+
+## 9. The result of $a below is:
 ```php
 <?php
 $a = in_array('01', array('1')) == var_dump('01' == 1);
 ?>
 ```
-A true   
-B false  
+A true
+B false
 
-答案为B
+The answer is B
 
-## 10. 说下php中empty()和isset()的区别。
+## 10. Talk about the difference between empty() and isset() in php.
 
-`isset` 用于检测变量是否被设置，使用 `isset()` 测试一个被设置成 NULL 的变量，将返回 `FALSE` 。  
-`empty` 如果 `var` 是非空或非零的值，则 `empty()` 返回 `FALSE`。换句话说，`""、0、"0"、NULL、FALSE、array()、var $var;` 以及没有任何属性的对象都将被认为是空的，如果 `var` 为空，则返回 `TRUE` 。
+`isset` is used to check whether a variable is set, using `isset()` to test a variable that is set to NULL will return `FALSE`.
+`empty` If `var` is a non-empty or non-zero value, `empty()` returns `FALSE`. In other words, `"", 0, "0", NULL, FALSE, array(), var $var;`, and objects without any attributes will be considered empty, and if `var` is empty, return `TRUE`.
 
-如果变量为 `0` ，则`empty()`会返回`TRUE`，`isset()`会返回`TRUE`；  
-如果变量为空字符串，则`empty()`会返回TRUE，`isset()`会返回`TRUE`；  
-如果变量未定义，则`empty()`会返回`TRUE`，`isset()`会返回`FLASE`。
+If the variable is `0`, `empty()` will return `TRUE`, and `isset()` will return `TRUE`;
+If the variable is an empty string, `empty()` will return TRUE, and `isset()` will return `TRUE`;
+If the variable is undefined, `empty()` will return `TRUE`, and `isset()` will return `FLASE`.
    
-注意：`isset()` 只能用于变量，因为传递任何其它参数都将造成解析错误。若想检测常量是否已设置，可使用 `defined()` 函数。
-当要 判断一个变量是否已经声明的时候 可以使用 `isset` 函数；  
-当要 判断一个变量是否已经赋予数据且不为空 可以用 `empty `函数；  
-当要 判断 一个变量 存在且不为空 先 `isset` 函数 再用 `empty` 函数；  
-
+Note: `isset()` can only be used with variables, because passing any other parameters will cause a parse error. To check whether a constant is set, use the `defined()` function.
+When you want to judge whether a variable has been declared, you can use the `isset` function;
+When you want to judge whether a variable has been assigned data and is not empty, you can use the `empty` function;
+When you want to judge that a variable exists and is not empty, first use the `isset` function and then use the `empty` function;
